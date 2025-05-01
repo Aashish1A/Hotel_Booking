@@ -3,6 +3,17 @@
 
 @import "tailwindcss";
 
+@theme {
+    --primary-color: #2563EB;
+    --secondary-color: #FBBF24;
+}
+
 @layer base{
-    
+    *{
+        font-family: Outfit;
+    }
+
+    .font-playFair{
+        font-family: Playfair !important;
+    }
 }
