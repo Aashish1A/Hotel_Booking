@@ -47,6 +47,7 @@ const Hero = () => {
             <button className='flex items-center justify-center gap-1 rounded-md bg-black py-3 px-4 text-white my-auto cursor-pointer max-md:w-full max-md:py-1' >
                 <img src={assets.searchIcon} alt="searchIcon" className='h-7' />
                 <span>Search</span>
+
             </button>
         </form>
     </div>
