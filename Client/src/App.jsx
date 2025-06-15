@@ -5,6 +5,7 @@ import AllRooms from "./Pages/AllRooms";
 import Home from "./Pages/Home"
 import {Routes, Route, useLocation} from "react-router-dom";
 import RoomDetails from "./Pages/RoomDetails";
+import MyBooking from "./Pages/MyBooking";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/rooms' element={<AllRooms />} />
         <Route path='/rooms/:id' element={<RoomDetails />} />
+        <Route path='/my-bookings' element={<MyBooking />} />
       </Routes>
       </div>
       <Footer />
