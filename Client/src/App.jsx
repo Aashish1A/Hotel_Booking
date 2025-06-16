@@ -6,6 +6,7 @@ import Home from "./Pages/Home"
 import {Routes, Route, useLocation} from "react-router-dom";
 import RoomDetails from "./Pages/RoomDetails";
 import MyBooking from "./Pages/MyBooking";
+import HotelReg from "./Components/HotelReg";
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
   return (
     <>
       {!isOwnerPath && <Navbar />}
+      {true && <HotelReg />}
       <div className="min-h-[70vh]">
         <Routes>
         <Route path='/' element={<Home />} />
