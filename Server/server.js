@@ -4,8 +4,13 @@ import dotenv from 'dotenv/config';
 import connectDB from './configs/db.js';
 import { clerkMiddleware } from '@clerk/express'
 import clerkWebhook from './controllers/clerkWebHooks.js';
+import userRouter from './routes/userRoutes.js';
+import connectCloudinary from './configs/cloudinary.js';
+import roomRouter from './routes/roomRoutes.js';
+import hotelRouter from './routes/hotelRoutes.js';
 
 connectDB(); // Connect to MongoDB
+connectCloudinary(); // Connect to Cloudinary
 
 const app = express();
 const PORT = process.env.PORT || 5000;  
@@ -22,10 +27,10 @@ app.use(express.json());
 app.use("/api/clerk", clerkWebhook);
 
 // Sample route
-app.get('/', (req, res) => {      
-    res.send('Welcome to the Hotel Booking API');
-    }
-);
+app.get('/', (req, res) => res.send('Welcome to the Hotel Booking API'));
+app.use("/api/user", userRouter);
+app.use("/api/hotels", hotelRouter);
+app.use("/api/rooms", roomRouter);
 
 // Start the server
 app.listen(PORT, () => {
