@@ -5,7 +5,7 @@ import {v2 as cloudinary} from "cloudinary";
 // API to create a new room for hotel
 export const createRoom = async (req, res) => {
     try {
-        const { roomType, price, amenities } = req.body;
+        const { roomType, amenities } = req.body;
 
         // Check if the hotel exists and belongs to the user
         const hotel = await Hotel.findOne({ owner: req.auth.userId });

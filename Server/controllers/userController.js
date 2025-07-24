@@ -16,7 +16,7 @@ export const storeRecentSearchedCities = async (req, res) => {
         const user = await req.user;
 
         if(user.recentSearchedCities.length < 3) {
-            user.recentSearchedCities.push(recentSearchCity); // Remove the oldest city
+            user.recentSearchedCities.push(recentSearchCity); 
         }else{
             user.recentSearchedCities.shift(); // Remove the oldest city
             user.recentSearchedCities.push(recentSearchCity); // Add the new city
