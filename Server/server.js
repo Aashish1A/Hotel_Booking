@@ -8,6 +8,7 @@ import userRouter from './routes/userRoutes.js';
 import connectCloudinary from './configs/cloudinary.js';
 import roomRouter from './routes/roomRoutes.js';
 import hotelRouter from './routes/hotelRoutes.js';
+import bookingRouter from './routes/bookingRoutes.js';
 
 connectDB(); // Connect to MongoDB
 connectCloudinary(); // Connect to Cloudinary
@@ -31,6 +32,7 @@ app.get('/', (req, res) => res.send('Welcome to the Hotel Booking API'));
 app.use("/api/user", userRouter);
 app.use("/api/hotels", hotelRouter);
 app.use("/api/rooms", roomRouter);
+app.use("/api/bookings", bookingRouter);
 
 // Start the server
 app.listen(PORT, () => {
