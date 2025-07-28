@@ -31,6 +31,7 @@ const clerkWebhook = async (req, res) => {
             case 'user.created':
                 // Create a new user in the database
                 await User.create(userData);
+                console.log("User created:", userData);
                 break;
 
             case 'user.updated':
@@ -50,7 +51,7 @@ const clerkWebhook = async (req, res) => {
         res.json({success: true, message: 'Webhook processed successfully'});
 
     } catch (error) {
-        console.log(error.message);
+        console.log("Webhook error:", error);
         res.json({success: false, message: error.message});
     }
 

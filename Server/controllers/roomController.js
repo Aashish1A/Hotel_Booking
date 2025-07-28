@@ -8,7 +8,7 @@ export const createRoom = async (req, res) => {
         const { roomType, amenities } = req.body;
 
         // Check if the hotel exists and belongs to the user
-        const hotel = await Hotel.findOne({ owner: req.auth.userId });
+        const hotel = await Hotel.findOne({ owner: req.auth().userId });
         if (!hotel) {
             return res.status(404).json({ success: false, message: "Hotel not found or you do not have permission to add rooms" });
         }
@@ -57,7 +57,7 @@ export const getRooms = async (req, res) => {
 // API to get all rooms for a specific hotel
 export const getOwnerRooms = async (req, res) => {
     try {
-       const hotelData = await Hotel({ owner: req.auth.userId });
+       const hotelData = await Hotel({ owner: req.auth().userId });
        const rooms = await Room.find({ hotel: hotelData._id.toString() }).populate("hotels");
          res.json({ success: true, rooms });
     } catch (error) {
