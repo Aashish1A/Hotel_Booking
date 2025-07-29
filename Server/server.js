@@ -10,24 +10,25 @@ import roomRouter from './routes/roomRoutes.js';
 import hotelRouter from './routes/hotelRoutes.js';
 import bookingRouter from './routes/bookingRoutes.js';
 
-connectDB(); // Connect to MongoDB
-connectCloudinary(); // Connect to Cloudinary
+connectDB();
+connectCloudinary();
 
 const app = express();
-const PORT = process.env.PORT;  
+const PORT = process.env.PORT;
 
-app.use(cors()); // Enable Cross-Origin Resource Sharing
+// Enable CORS
+app.use(cors());
 
-// Use Clerk middleware for authentication
+// 🛡️ Clerk Auth Middleware
 app.use(clerkMiddleware());
 
-// Middleware to parse JSON bodies
+// ✅ Clerk Webhook: RAW BODY middleware for verification
+app.use("/api/clerk", express.raw({ type: "*/*" }), clerkWebhook);
+
+// ✅ Parse JSON body after raw body setup
 app.use(express.json());
 
-// API to listen clerk webhooks
-app.use("/api/clerk", clerkWebhook);
-
-// Sample route
+// API Routes
 app.get('/', (req, res) => res.send('Welcome to the Hotel Booking API'));
 app.use("/api/user", userRouter);
 app.use("/api/hotels", hotelRouter);
