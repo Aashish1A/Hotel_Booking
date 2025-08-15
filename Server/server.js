@@ -28,6 +28,7 @@ import connectCloudinary from "./configs/cloudinary.js";
 import roomRouter from "./routes/roomRoutes.js";
 import hotelRouter from "./routes/hotelRoutes.js";
 import bookingRouter from "./routes/bookingRoutes.js";
+import { stripeWebhooks } from "./controllers/stripeWebhooks.js";
 
 // INITIALIZE CONNECTIONS
 // Connect to MongoDB database and Cloudinary service
@@ -41,6 +42,9 @@ const PORT = process.env.PORT;
 // CORS CONFIGURATION
 // Enable Cross-Origin Resource Sharing for frontend communication
 app.use(cors());
+
+// API to listen to stripe webhooks
+app.post("/api/stripe", express.raw({ type: "application/json" }), stripeWebhooks);
 
 // CLERK WEBHOOK MIDDLEWARE
 // Handle Clerk authentication webhooks with raw body parsing
