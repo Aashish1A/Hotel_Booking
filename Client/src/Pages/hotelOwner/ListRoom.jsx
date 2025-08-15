@@ -1,39 +1,118 @@
-import React, { useState } from 'react'
-import { roomsDummyData } from '../../assets/assets';
-import Title from '../../Components/Title';
+import React, { useEffect, useState } from "react";
+// import { roomsDummyData } from '../../assets/assets';
+import Title from "../../Components/Title";
+import { useAppContext } from "../../context/appContext";
+import toast from "react-hot-toast";
 
+/**
+ * List Rooms Component
+ * Displays all rooms owned by the hotel owner with availability toggle
+ */
 const ListRoom = () => {
+  const [rooms, setRooms] = useState([]); // Hotel owner's rooms
 
-  const [rooms] = useState(roomsDummyData); // Placeholder for room data
+  const { currency, axios, getToken, user } = useAppContext();
+
+  // Fetch rooms for the authenticated hotel owner
+  const fetchRooms = async () => {
+    try {
+      const { data } = await axios.get("/api/rooms/owner", {
+        headers: {
+          Authorization: `Bearer ${await getToken()}`,
+        },
+      });
+
+      if (data.success) {
+        setRooms(data.rooms || []);
+      } else {
+        toast.error(data.message || "Failed to load rooms");
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Error loading rooms");
+    }
+  };
+
+  // Toggle room availability status
+  const toggleAvailability = async (roomId) => {
+    try {
+      const { data } = await axios.post(
+        "/api/rooms/toggle-availability",
+        { roomId },
+        {
+          headers: {
+            Authorization: `Bearer ${await getToken()}`,
+          },
+        }
+      );
+      if (data.success) {
+        toast.success(data.message);
+        fetchRooms(); // Refresh the room list after toggling
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  // Load rooms when component mounts or user changes
+  useEffect(() => {
+    fetchRooms();
+  }, [user]);
 
   return (
     <div>
-        <Title align='left' font='outfit' title='Room Listings' subTitle='View, edit, or manage all listed rooms. Keep the information up-to-date to provide the best experience for users.' />
-        <p className='mt-4 text-gray-800'>All Rooms</p>
-        
-        <div className='w-full max-w-3xl text-left border border-gray-300 rounded-lg max-h-80 overflow-y-scroll mt-3'>
-        <table className='w-full'>
-          <thead className='bg-gray-50'>
+      <Title
+        align="left"
+        font="outfit"
+        title="Room Listings"
+        subTitle="View, edit, or manage all listed rooms. Keep the information up-to-date to provide the best experience for users."
+      />
+      <p className="mt-4 text-gray-800">All Rooms</p>
+
+      <div className="w-full max-w-3xl text-left border border-gray-300 rounded-lg max-h-80 overflow-y-scroll mt-3">
+        <table className="w-full">
+          <thead className="bg-gray-50">
             <tr>
-              <th className='py-3 px-4 text-gray-800 font-medium'>Name</th>
-              <th className='py-3 px-4 text-gray-800 font-medium max-sm:hidden'>Facility</th>
-              <th className='py-3 px-4 text-gray-800 font-medium'>Price / night</th>
-              <th className='py-3 px-4 text-gray-800 font-medium text-center'>Action</th>
+              <th className="py-3 px-4 text-gray-800 font-medium">Name</th>
+              <th className="py-3 px-4 text-gray-800 font-medium max-sm:hidden">
+                Facility
+              </th>
+              <th className="py-3 px-4 text-gray-800 font-medium">
+                Price / night
+              </th>
+              <th className="py-3 px-4 text-gray-800 font-medium text-center">
+                Action
+              </th>
             </tr>
           </thead>
-          <tbody className='text-sm'>
-            {rooms.map((list, index) => (
-              <tr key={index} className='border-b border-gray-200 hover:bg-gray-50'>
-                <td className='py-3 px-4 border-t text-gray-700 border-gray-300'>{list.roomType}</td>
-                <td className='py-3 px-4 border-t text-gray-700 border-gray-300 max-sm:hidden'>{list.amenities.join(', ')}</td>
-                <td className='py-3 px-4 border-t text-gray-700 border-gray-300'>${list.pricePerNight}</td>
-                <td className='py-3 px-4 border-t text-red-500 border-gray-300 text-center'>
-                  <label className='relative inline-flex items-center cursor-pointer text-gray-900 gap-3'>
-                    <input type="checkbox" className='sr-only peer' checked={list.isAvailable} />
-                    <div className='w-12 h-7 bg-slate-300 rounded-full peer peer-checked:bg-blue-600 transition-colors duration-200 relative'>
-                      <span className='absolute left-1 top-1 w-5 h-5 bg-white rounded-full shadow-md peer-checked:translate-x-5 transition-transform duration-200'></span>   
-                    </div>   
-                  </label>
+          <tbody className="text-sm">
+            {rooms.map((room) => (
+              <tr
+                key={room._id}
+                className="border-b border-gray-200 hover:bg-gray-50"
+              >
+                <td className="py-3 px-4 text-gray-800">{room.roomType}</td>
+                <td className="py-3 px-4 text-gray-800 max-sm:hidden">
+                  {room.amenities.join(", ")}
+                </td>
+                <td className="py-3 px-4 text-gray-800">
+                  {currency}
+                  {room.pricePerNight} / night
+                </td>
+                <td className="py-3 px-4 text-center">
+                  <button
+                    onClick={() => toggleAvailability(room._id)}
+                    className={`px-3 py-1 rounded ${
+                      room.isAvailable
+                        ? "bg-red-500 text-white"
+                        : "bg-green-500 text-white"
+                    }`}
+                  >
+                    {room.isAvailable
+                      ? "Mark as Unavailable"
+                      : "Mark as Available"}
+                  </button>
                 </td>
               </tr>
             ))}
@@ -41,7 +120,7 @@ const ListRoom = () => {
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ListRoom
+export default ListRoom;
