@@ -1,3 +1,22 @@
+/**
+ * HOTEL BOOKING API SERVER
+ *
+ * Main server file that sets up and configures the Express.js application
+ * for the Hotel Booking platform. This file handles:
+ *
+ * - Database and Cloudinary connections
+ * - Middleware configuration (CORS, authentication, body parsing)
+ * - API route mounting and organization
+ * - Clerk webhook integration for user management
+ * - Server startup and port configuration
+ *
+ * Architecture:
+ * - RESTful API design with organized route modules
+ * - Clerk authentication integration for secure user management
+ * - Cloudinary integration for image upload and storage
+ * - MongoDB database with Mongoose ODM
+ */
+
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv/config";
@@ -10,32 +29,44 @@ import roomRouter from "./routes/roomRoutes.js";
 import hotelRouter from "./routes/hotelRoutes.js";
 import bookingRouter from "./routes/bookingRoutes.js";
 
+// INITIALIZE CONNECTIONS
+// Connect to MongoDB database and Cloudinary service
 connectDB();
 connectCloudinary();
 
+// EXPRESS APP SETUP
 const app = express();
 const PORT = process.env.PORT;
 
-// Enable CORS
+// CORS CONFIGURATION
+// Enable Cross-Origin Resource Sharing for frontend communication
 app.use(cors());
 
-// ✅ Clerk Webhook: RAW BODY middleware for verification
+// CLERK WEBHOOK MIDDLEWARE
+// Handle Clerk authentication webhooks with raw body parsing
+// This must come BEFORE express.json() to preserve raw body for signature verification
 app.use("/api/clerk", express.raw({ type: "*/*" }), clerkWebhook);
 
-// ✅ Parse JSON body after raw body setup
+// BODY PARSING MIDDLEWARE
+// Parse incoming JSON requests (placed after webhook to avoid conflicts)
 app.use(express.json());
 
-// 🛡️ Clerk Auth Middleware
+// AUTHENTICATION MIDDLEWARE
+// Integrate Clerk authentication for protected routes
 app.use(clerkMiddleware());
 
-// API Routes
+// API ROUTES CONFIGURATION
+// Root endpoint for API health check
 app.get("/", (req, res) => res.send("Welcome to the Hotel Booking API"));
-app.use("/api/user", userRouter);
-app.use("/api/hotels", hotelRouter);
-app.use("/api/rooms", roomRouter);
-app.use("/api/bookings", bookingRouter);
 
-// Start the server
+// Mount route modules for organized API structure
+app.use("/api/user", userRouter); // User profile and preferences
+app.use("/api/hotels", hotelRouter); // Hotel registration and management
+app.use("/api/rooms", roomRouter); // Room CRUD operations
+app.use("/api/bookings", bookingRouter); // Booking and availability management
+
+// SERVER STARTUP
+// Start the Express server on the configured port
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
