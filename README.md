@@ -16,9 +16,9 @@
 
 ## 📸 Preview
 
-> **Live Demo:** [Hotel Booking System](https://your-deployed-url.vercel.app) _(Coming Soon)_
+> **Live Demo:** [Hotel Booking System]([https://stayfinder-roan.vercel.app])
 
-![Hotel Booking System Preview](https://via.placeholder.com/800x400/2563eb/white?text=Hotel+Booking+System)
+![Hotel Booking System Preview](https://stayfinder-roan.vercel.app)
 
 ---
 
