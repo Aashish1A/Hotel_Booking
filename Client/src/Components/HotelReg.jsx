@@ -3,14 +3,20 @@ import { assets, cities } from "../assets/assets";
 import { useAppContext } from "../context/appContext";
 import toast from "react-hot-toast";
 
+/**
+ * Hotel Registration Modal Component
+ * Allows users to register their property as a hotel
+ */
 const HotelReg = () => {
   const { setShowHotelReg, axios, getToken, setIsOwner } = useAppContext();
 
+  // Form state for hotel details
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
 
+  // Handle hotel registration form submission
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -23,24 +29,27 @@ const HotelReg = () => {
 
       if (data.success) {
         toast.success(data.message);
-        setIsOwner(true);
-        setShowHotelReg(false);
+        setIsOwner(true); // Update user role to hotel owner
+        setShowHotelReg(false); // Close modal
       } else {
         toast.error(data.message);
       }
     } catch (error) {
-      toast.error(error.message);
+      const errorMessage =
+        error.response?.data?.message || error.message || "Registration failed";
+      toast.error(errorMessage);
     }
   };
 
   return (
+    // Modal overlay - close on background click
     <div
       onClick={() => setShowHotelReg(false)}
       className="fixed top-0 bottom-0 left-0 right-0 z-100 flex items-center justify-center bg-black/70"
     >
       <form
-        onSubmit={onSubmitHandler}
-        onClick={(e) => e.stopPropagation()}
+        onSubmitHandler={onSubmitHandler}
+        onClick={(e) => e.stopPropagation()} // Prevent modal close on form click
         className="flex bg-white rounded-xl max-w-4xl max-md:mx-2"
       >
         <img
