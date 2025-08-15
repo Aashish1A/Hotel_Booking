@@ -6,6 +6,8 @@
   <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
   <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
   <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/Stripe-008CDD?style=for-the-badge&logo=stripe&logoColor=white" alt="Stripe" />
+  <img src="https://img.shields.io/badge/Clerk-6C47FF?style=for-the-badge&logo=clerk&logoColor=white" alt="Clerk" />
 </div>
 
 <div align="center">
@@ -16,9 +18,13 @@
 
 ## 📸 Preview
 
-> **Live Demo:** [Hotel Booking System]([https://stayfinder-roan.vercel.app])
+> **🚀 Live Demo:** [StayFinder - Hotel Booking System](https://stayfinder-roan.vercel.app)
 
-![Hotel Booking System Preview](https://stayfinder-roan.vercel.app)
+<div align="center">
+  <a href="https://stayfinder-roan.vercel.app" target="_blank">
+    <img src="https://img.shields.io/badge/🌐_Live_Demo-Visit_StayFinder-blue?style=for-the-badge&logo=vercel" alt="Live Demo" />
+  </a>
+</div>
 
 ---
 
@@ -51,6 +57,7 @@
 - 📱 **Mobile First** - Responsive design for all screen sizes
 - 🔒 **Secure** - Protected routes and data validation
 - 📧 **Email Integration** - Automated notifications via Brevo SMTP
+- 💳 **Payment Processing** - Secure transactions with Stripe integration
 
 ---
 
@@ -77,6 +84,7 @@
 | **Clerk**      | Complete authentication solution           |
 | **Cloudinary** | Cloud-based image storage and optimization |
 | **Nodemailer** | Email sending with Brevo SMTP              |
+| **Stripe**     | Secure payment processing and webhooks     |
 
 ### **Database Schema**
 
