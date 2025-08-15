@@ -24,6 +24,10 @@ const BookIcon = () => (
   </svg>
 );
 
+/**
+ * Navigation Component
+ * Responsive navbar with scroll effects and authentication integration
+ */
 const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
@@ -32,6 +36,7 @@ const Navbar = () => {
     { name: "About", path: "/" },
   ];
 
+  // UI state for scroll effects and mobile menu
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -40,6 +45,7 @@ const Navbar = () => {
 
   const { user, navigate, isOwner, setShowHotelReg } = useAppContext();
 
+  // Handle scroll-based styling and mobile menu behavior
   useEffect(() => {
     if (location.pathname.includes("/")) {
       setIsScrolled(true);

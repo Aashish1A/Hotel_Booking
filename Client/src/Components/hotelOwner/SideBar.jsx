@@ -1,26 +1,42 @@
-import React from 'react'
-import { assets } from '../../assets/assets';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { assets } from "../../assets/assets";
+import { NavLink } from "react-router-dom";
 
+/**
+ * Hotel Owner Sidebar Component
+ * Left navigation sidebar for hotel owner dashboard with menu items
+ */
 const SideBar = () => {
-
-    // This component is currently empty, but you can add sidebar items here
-    const sidebarLinks = [
-        { name: 'Dashboard', path: '/owner', icon:assets.dashboardIcon },
-        { name: 'Add Room', path:'/owner/add-room' , icon:assets.addIcon },
-        { name: 'List Room', path: '/owner/list-room' , icon:assets.listIcon },
-    ];
+  // Navigation links for hotel owner dashboard
+  const sidebarLinks = [
+    { name: "Dashboard", path: "/owner", icon: assets.dashboardIcon },
+    { name: "Add Room", path: "/owner/add-room", icon: assets.addIcon },
+    { name: "List Room", path: "/owner/list-room", icon: assets.listIcon },
+  ];
 
   return (
-    <div className='md:w-64 w-16 border-r h-full text-base border-gray-300 pt-4 flex flex-col transition-all duration-300'>
-        {sidebarLinks.map((link, index) => (
-            <NavLink to={link.path} key={index} end='/owner' className={({ isActive }) => `flex items-center gap-3 px-4 md:px-8 py-2 ${isActive ? 'border-r-4 md:border-r-[6px] bg-blue-600/10 border-blue-600 text-blue-600' : 'hover:bg-gray-100/90 border-white text-gray-700'}`}>
-                <img src={link.icon} alt={link.name} className='min-w-5 min-h-5' />
-                <p className='md:block hidden text-center'>{link.name}</p>
-            </NavLink>
-        ))}
+    <div className="md:w-64 w-16 border-r h-full text-base border-gray-300 pt-4 flex flex-col transition-all duration-300">
+      {sidebarLinks.map((link, index) => (
+        // Active link styling with blue accent
+        <NavLink
+          to={link.path}
+          key={index}
+          end="/owner"
+          className={({ isActive }) =>
+            `flex items-center gap-3 px-4 md:px-8 py-2 ${
+              isActive
+                ? "border-r-4 md:border-r-[6px] bg-blue-600/10 border-blue-600 text-blue-600"
+                : "hover:bg-gray-100/90 border-white text-gray-700"
+            }`
+          }
+        >
+          <img src={link.icon} alt={link.name} className="min-w-5 min-h-5" />
+          {/* Hide text on mobile, show on desktop */}
+          <p className="md:block hidden text-center">{link.name}</p>
+        </NavLink>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default SideBar
+export default SideBar;
