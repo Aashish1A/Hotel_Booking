@@ -20,6 +20,17 @@ const bookingSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// Add compound index to prevent duplicate bookings for same user+room+dates
+bookingSchema.index(
+  { user: 1, room: 1, checkInDate: 1, checkOutDate: 1 },
+  {
+    unique: true,
+    partialFilterExpression: {
+      status: { $in: ["pending", "confirmed"] },
+    },
+  }
+);
+
 const Booking = mongoose.model("Booking", bookingSchema);
 
 export default Booking;
