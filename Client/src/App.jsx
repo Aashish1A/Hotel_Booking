@@ -3,6 +3,8 @@ import Hero from "./Components/Hero";
 import Navbar from "./Components/Navbar";
 import AllRooms from "./Pages/AllRooms";
 import Home from "./Pages/Home";
+import About from "./Pages/About";
+import Experience from "./Pages/Experience";
 import { Routes, Route, useLocation } from "react-router-dom";
 import RoomDetails from "./Pages/RoomDetails";
 import MyBooking from "./Pages/MyBooking";
@@ -35,6 +37,8 @@ function App() {
         <Routes>
           {/* Customer routes */}
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/experience" element={<Experience />} />
           <Route path="/rooms" element={<AllRooms />} />
           <Route path="/rooms/:id" element={<RoomDetails />} />
           <Route path="/my-bookings" element={<MyBooking />} />
