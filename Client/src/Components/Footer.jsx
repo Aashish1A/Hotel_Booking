@@ -1,76 +1,91 @@
-import React from 'react'
-import { assets } from '../assets/assets'
+import React from "react";
+import { assets } from "../assets/assets";
 
 const Footer = () => {
   return (
-    <div className='bg-[#f6f9fc] text-gray-500/80 pt-8 px-6 md:px-16 lg:px-24 xl:px-32'>
-            <div className='flex flex-wrap justify-between gap-12 md:gap-6'>
-                <div className='max-w-80'>
-                    <img src={assets.logo} alt="logo" className='mb-4 h-8 md:h-9 invert opacity-80' />
-                    <p className='text-sm'>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
-                    </p>
-                    <div className='flex items-center gap-3 mt-4'>
-                        {/* Instagram */}
-                        <img src={assets.facebookIcon} alt="facebookIcon" className='w-6' />
-                        {/* Facebook */}
-                        <img src={assets.instagramIcon} alt="instagramIcon" className='w-6' />
-                        {/* Twitter */}
-                        <img src={assets.twitterIcon} alt="twitterIcon" className='w-6' />
-                        {/* LinkedIn */}
-                        <img src={assets.linkendinIcon} alt="linkendinIcon" className='w-6' />
-                    </div>
-                </div>
-
-                <div>
-                    <p className='text-lg text-gray-800 font-playfair'>COMPANY</p>
-                    <ul className='mt-3 flex flex-col gap-2 text-sm'>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Press</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Partners</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <p className='text-lg text-gray-800 font-playfair'>SUPPORT</p>
-                    <ul className='mt-3 flex flex-col gap-2 text-sm'>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Safety Information</a></li>
-                        <li><a href="#">Cancellation Options</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Accessibility</a></li>
-                    </ul>
-                </div>
-
-                <div className='max-w-80'>
-                    <p className='text-lg text-gray-800 font-playfair'>STAY UPDATED</p>
-                    <p className='mt-3 text-sm'>
-                        Subscribe to our newsletter for inspiration and special offers.
-                    </p>
-                    <div className='flex items-center mt-4'>
-                        <input type="text" className='bg-white rounded-l border border-gray-300 h-9 px-3 outline-none' placeholder='Your email' />
-                        <button className='flex items-center justify-center bg-black h-9 w-9 aspect-square rounded-r'>
-                            {/* Arrow icon */}
-                            <img src={assets.arrowIcon} alt="arrowIcon" className='w-3.5 invert' />
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <hr className='border-gray-300 mt-8' />
-
-            <div className='flex flex-col md:flex-row gap-2 items-center justify-between py-5'>
-                <p>© {new Date().getFullYear()} QuickStay. All rights reserved.</p>
-                <ul className='flex items-center gap-4'>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Terms</a></li>
-                    <li><a href="#">Sitemap</a></li>
-                </ul>
-            </div>
+    <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white pt-16 px-6 md:px-16 lg:px-24 xl:px-32">
+      <div className="flex flex-wrap justify-between gap-12 md:gap-6">
+        <div className="max-w-80">
+          <img src={assets.logoWhite} alt="StayFinder Logo" className="mb-6 h-12 object-contain" />
+          <p className="text-gray-300 text-sm leading-relaxed mb-6">
+            StayFinder is your gateway to exceptional accommodations worldwide.
+            We connect travelers with unique properties and unforgettable
+            experiences.
+          </p>
+          <div className="flex items-center gap-4">
+            <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+              <img src={assets.facebookIcon} alt="facebook" className="w-5 h-5" />
+            </a>
+            <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-pink-600 transition-colors">
+              <img src={assets.instagramIcon} alt="instagram" className="w-5 h-5" />
+            </a>
+            <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-blue-400 transition-colors">
+              <img src={assets.twitterIcon} alt="twitter" className="w-5 h-5" />
+            </a>
+            <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+              <img src={assets.linkendinIcon} alt="linkedin" className="w-5 h-5" />
+                className="w-5 h-5"
+            </a>
+          </div>
         </div>
-  )
-}
 
-export default Footer
+        <div>
+          <p className="text-lg text-white font-bold mb-4">COMPANY</p>
+          <ul className="flex flex-col gap-3 text-sm">
+            <li><a href="/about" className="text-gray-300 hover:text-white transition-colors">About Us</a></li>
+            <li><a href="/careers" className="text-gray-300 hover:text-white transition-colors">Careers</a></li>
+            <li><a href="/press" className="text-gray-300 hover:text-white transition-colors">Press</a></li>
+            <li><a href="/blog" className="text-gray-300 hover:text-white transition-colors">Blog</a></li>
+            <li><a href="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p className="text-lg text-white font-bold mb-4">SUPPORT</p>
+          <ul className="flex flex-col gap-3 text-sm">
+            <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Help Center</a></li>
+            <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Safety Information</a></li>
+            <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Cancellation Policy</a></li>
+            <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Contact Us</a></li>
+            <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Accessibility</a></li>
+          </ul>
+        </div>
+
+        <div className="max-w-80">
+          <p className="text-lg text-white font-bold mb-4">STAY UPDATED</p>
+          <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+            Subscribe to our newsletter for travel inspiration, exclusive deals,
+            and special offers.
+          </p>
+          <div className="flex items-center">
+            <input type="email" className="flex-1 bg-white/10 border border-white/20 rounded-l-lg h-12 px-4 outline-none text-white placeholder-gray-400 focus:border-blue-500"
+              placeholder="Enter your email"
+            />
+            <button className="bg-gradient-to-r from-blue-600 to-purple-600 h-12 px-6 rounded-r-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300">
+              <img
+                src={assets.arrowIcon}
+                alt="subscribe"
+                className="w-4 h-4 brightness-0 invert"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <hr className="border-gray-700 mt-12 mb-8" />
+
+      <div className="flex flex-col md:flex-row gap-4 items-center justify-between pb-8">
+        <p className="text-gray-400 text-sm">
+          © {new Date().getFullYear()} StayFinder. All rights reserved.
+        </p>
+        <ul className="flex items-center gap-6 text-sm">
+          <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+          <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+          <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default Footer;
