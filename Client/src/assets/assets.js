@@ -75,7 +75,15 @@ export const assets = {
   totalRevenueIcon,
 };
 
-export const cities = ["Dubai", "Singapore", "New York", "London"];
+export const cities = [
+  { name: "Mumbai" },
+  { name: "Delhi" },
+  { name: "Bangalore" },
+  { name: "Chennai" },
+  { name: "Kolkata" },
+  { name: "Hyderabad" },
+  { name: "Pune" },
+];
 
 // Exclusive Offers Dummy Data
 export const exclusiveOffers = [
@@ -184,7 +192,7 @@ export const userDummyData = {
   createdAt: "2025-03-25T09:29:16.367Z",
   updatedAt: "2025-04-10T06:34:48.719Z",
   __v: 1,
-  recentSearchedCities: ["New York"],
+  recentSearchedCities: ["Mumbai"],
 };
 
 // Hotel Dummy Data
