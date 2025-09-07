@@ -32,8 +32,8 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Hotels", path: "/rooms" },
-    { name: "Experience", path: "/" },
-    { name: "About", path: "/" },
+    { name: "Experience", path: "/experience" },
+    { name: "About", path: "/about" },
   ];
 
   // UI state for scroll effects and mobile menu
@@ -73,8 +73,8 @@ const Navbar = () => {
       <Link to="/">
         <img
           src={assets.logo}
-          alt="logo"
-          className={`h-9 ${isScrolled && "invert opacity-80"}`}
+          alt="StayFinder Logo"
+          className="h-12 object-contain"
         />
       </Link>
 
