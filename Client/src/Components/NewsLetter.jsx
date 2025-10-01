@@ -5,7 +5,7 @@ import Title from "./Title";
 const NewsLetter = () => {
   return (
     <div className="flex justify-center px-4 md:px-6">
-      <div className="relative max-w-6xl w-full rounded-3xl overflow-hidden my-20 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 text-white shadow-2xl">
+      <div className="relative max-w-6xl w-full rounded-3xl overflow-hidden my-20 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white shadow-2xl">
         {/* Background Pattern */}
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>

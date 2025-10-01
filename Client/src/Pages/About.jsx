@@ -4,7 +4,7 @@ const About = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 text-white py-20">
+      <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white py-20">
         <div className="container mx-auto px-6 md:px-16 lg:px-24 xl:px-32">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
@@ -76,19 +76,19 @@ const About = () => {
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
                     <span className="text-gray-700">
                       Advanced analytics and reporting
                     </span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
                     <span className="text-gray-700">
                       Automated booking management
                     </span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
                     <span className="text-gray-700">
                       Marketing and promotional tools
                     </span>
@@ -159,9 +159,9 @@ const About = () => {
                 </p>
               </div>
               <div className="text-center p-6">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg
-                    className="w-8 h-8 text-purple-600"
+                    className="w-8 h-8 text-blue-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -202,7 +202,7 @@ const About = () => {
             </p>
             <div className="bg-white rounded-lg p-8 shadow-lg">
               <div className="flex items-center justify-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center">
                   <span className="text-white font-bold text-lg">AK</span>
                 </div>
                 <div className="text-left">
@@ -223,7 +223,7 @@ const About = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
         <div className="container mx-auto px-6 md:px-16 lg:px-24 xl:px-32">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
