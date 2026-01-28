@@ -5,22 +5,8 @@ import { useClerk, UserButton } from "@clerk/clerk-react";
 import { useAppContext } from "../context/appContext";
 
 const BookIcon = () => (
-  <svg
-    className="w-4 h-4 text-gray-700"
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    fill="none"
-    viewBox="0 0 24 24"
-  >
-    <path
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="M5 19V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v13H7a2 2 0 0 0-2 2Zm0 0a2 2 0 0 0 2 2h12M9 3v14m7 0v4"
-    />
+  <svg className="w-4 h-4 text-gray-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" >
+    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 19V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v13H7a2 2 0 0 0-2 2Zm0 0a2 2 0 0 0 2 2h12M9 3v14m7 0v4" />
   </svg>
 );
 
@@ -45,38 +31,26 @@ const Navbar = () => {
 
   const { user, navigate, isOwner, setShowHotelReg } = useAppContext();
 
+  // Check if on home page
+  const isHomePage = location.pathname === "/";
+
   // Handle scroll-based styling and mobile menu behavior
   useEffect(() => {
-    if (location.pathname.includes("/")) {
-      setIsScrolled(true);
-      return;
-    } else {
-      setIsScrolled(false);
-    }
-
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      setIsScrolled(window.scrollY > 100);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [location.pathname]);
+  }, []);
 
   return (
     <nav
-      className={`fixed top-0 left-0  w-full flex items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 z-50 ${
-        isScrolled
-          ? "bg-white/80 shadow-md text-gray-700 backdrop-blur-lg py-3 md:py-4"
-          : "py-4 md:py-6"
+      className={`fixed top-0 left-0 w-full flex items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 z-50 py-4 ${
+        !isHomePage || isScrolled ? "bg-white shadow-md" : ""
       }`}
     >
       {/* Logo */}
-      <Link to="/">
-        <img
-          src={assets.logo}
-          alt="StayFinder Logo"
-          className="h-12 object-contain"
-        />
-      </Link>
+      <svg width="175" height="35" viewBox="0 0 175 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M41.728 28.28q-2.38 0-4.088-.812-1.68-.811-3.052-2.436l2.52-2.52q.868 1.148 2.016 1.792 1.148.615 2.8.616 1.484 0 2.352-.588.896-.588.896-1.624 0-.896-.504-1.456t-1.344-.952a13 13 0 0 0-1.82-.7 33 33 0 0 1-1.988-.756 9.2 9.2 0 0 1-1.82-1.036q-.812-.644-1.316-1.624-.504-1.008-.504-2.52 0-1.792.868-3.052t2.38-1.932 3.416-.672q2.016 0 3.64.756t2.66 1.96l-2.52 2.52q-.868-.952-1.792-1.4-.896-.448-2.044-.448-1.316 0-2.072.504t-.756 1.456q0 .812.504 1.316t1.316.868q.84.364 1.82.7 1.008.336 1.988.756 1.008.42 1.82 1.092.84.672 1.344 1.736.504 1.036.504 2.576 0 2.745-1.932 4.312t-5.292 1.568M53.553 28V8.848h3.668V28zM50.39 17.696v-3.22h9.996v3.22zM67.776 28.28q-1.848 0-3.332-.924a6.44 6.44 0 0 1-2.324-2.52q-.84-1.596-.84-3.584 0-2.016.84-3.612a6.44 6.44 0 0 1 2.324-2.52q1.484-.924 3.332-.924 1.456 0 2.604.588a4.6 4.6 0 0 1 1.82 1.652q.7 1.036.756 2.352v4.872q-.056 1.345-.756 2.38a4.9 4.9 0 0 1-1.82 1.652q-1.147.588-2.604.588m.672-3.388q1.54 0 2.492-1.008.952-1.035.952-2.66 0-1.065-.448-1.876a3 3 0 0 0-1.204-1.288q-.756-.476-1.792-.476-1.008 0-1.792.476a3.2 3.2 0 0 0-1.204 1.288q-.42.812-.42 1.876 0 1.092.42 1.932.448.811 1.204 1.288.784.448 1.792.448M71.696 28v-3.64l.588-3.304-.588-3.248v-3.332h3.64V28zm11.141.112-5.656-13.636h3.976l3.752 10.416h-1.344l3.892-10.416h4.004l-6.02 13.636zm-3.752 5.544 4.116-8.708 2.24 3.164-2.464 5.544zM93.711 28V8.316h3.808V28zm2.8-8.064v-3.388h9.912v3.388zm0-8.26v-3.36H106.9v3.36zM109.507 28V14.476h3.696V28zm1.848-15.708q-.897 0-1.484-.588-.588-.616-.588-1.512 0-.868.588-1.484.587-.615 1.484-.616.923 0 1.484.616.588.615.588 1.484 0 .895-.588 1.512-.56.588-1.484.588M125.552 28v-7.756q0-1.204-.756-1.96t-1.96-.756q-.784 0-1.4.336a2.53 2.53 0 0 0-.98.952q-.336.616-.336 1.428l-1.428-.728q0-1.596.672-2.772a4.97 4.97 0 0 1 1.904-1.876q1.231-.672 2.772-.672 1.484 0 2.66.756 1.176.728 1.848 1.932.672 1.176.672 2.548V28zm-9.1 0V14.476h3.668V28zm21.435.28q-1.876 0-3.36-.924a6.64 6.64 0 0 1-2.352-2.52q-.84-1.596-.84-3.584 0-2.016.84-3.612.867-1.596 2.324-2.52 1.483-.924 3.388-.924 1.455 0 2.604.588a4.74 4.74 0 0 1 1.876 1.652q.727 1.036.784 2.352v4.816a4.6 4.6 0 0 1-.756 2.38 4.95 4.95 0 0 1-1.876 1.68q-1.176.616-2.632.616m.616-3.388q1.036 0 1.792-.448a3.2 3.2 0 0 0 1.204-1.288q.447-.84.448-1.932 0-1.065-.448-1.876-.42-.84-1.204-1.288-.756-.476-1.764-.476-1.037 0-1.82.476a3.5 3.5 0 0 0-1.204 1.288q-.42.812-.42 1.876 0 1.092.42 1.932.447.811 1.232 1.288.783.448 1.764.448M145.391 28h-3.64v-3.64l.588-3.304-.616-3.248V7.756h3.668zm9.713.28q-2.129 0-3.78-.896a7.1 7.1 0 0 1-2.632-2.52q-.952-1.596-.952-3.64 0-2.016.924-3.584a6.94 6.94 0 0 1 2.576-2.52q1.623-.952 3.612-.952 1.959 0 3.444.896a6.1 6.1 0 0 1 2.352 2.408q.868 1.512.868 3.444 0 .364-.056.756a6 6 0 0 1-.14.84l-11.368.028v-2.744l9.66-.028-1.484 1.148q-.057-1.204-.448-2.016a2.6 2.6 0 0 0-1.092-1.232q-.7-.448-1.736-.448-1.092 0-1.904.504a3.2 3.2 0 0 0-1.26 1.372q-.42.869-.42 2.072 0 1.232.448 2.156a3.46 3.46 0 0 0 1.344 1.4q.867.476 2.016.476 1.035 0 1.876-.336a4.1 4.1 0 0 0 1.456-1.064l2.156 2.156a6.25 6.25 0 0 1-2.408 1.736q-1.4.588-3.052.588m8.68-.28V14.476h3.668V28zm3.668-7.476-1.428-.952q.252-2.492 1.456-3.92 1.204-1.456 3.472-1.456.98 0 1.764.336.784.307 1.428 1.036l-2.296 2.632a1.9 1.9 0 0 0-.756-.504 2.6 2.6 0 0 0-.98-.168q-1.176 0-1.932.756-.728.728-.728 2.24" fill={!isHomePage || isScrolled ? "#000" : "#fff"}/><path fill-rule="evenodd" clip-rule="evenodd" d="M.7 11.86C0 13.142 0 14.687 0 17.776v2.054c0 5.266 0 7.899 1.582 9.535C3.163 31 5.709 31 10.8 31h5.4c5.091 0 7.637 0 9.218-1.636S27 25.094 27 19.829v-2.054c0-3.09 0-4.634-.7-5.914-.702-1.28-1.982-2.076-4.543-3.665l-2.7-1.676C16.349 4.84 14.996 4 13.5 4s-2.85.84-5.557 2.52l-2.7 1.676c-2.56 1.59-3.841 2.384-4.542 3.665m9.353 10.227a1.012 1.012 0 1 0-1.206 1.626 7.8 7.8 0 0 0 4.653 1.55c1.735 0 3.34-.577 4.653-1.55a1.012 1.012 0 1 0-1.206-1.626 5.76 5.76 0 0 1-3.447 1.15 5.76 5.76 0 0 1-3.447-1.15" fill={!isHomePage || isScrolled ? "#000" : "#fff"}/></svg>
 
       {/* Desktop Nav */}
       <div className="hidden md:flex items-center gap-4 lg:gap-8">
@@ -84,23 +58,23 @@ const Navbar = () => {
           <Link
             key={i}
             to={link.path}
-            className={`group flex flex-col gap-0.5 ${
-              isScrolled ? "text-gray-700" : "text-white"
+            className={`group flex flex-col gap-0.5 transition-colors duration-300 ${
+              !isHomePage || isScrolled ? "text-gray-900" : "text-white"
             }`}
           >
             {link.name}
             <div
-              className={`${
-                isScrolled ? "bg-gray-700" : "bg-white"
-              } h-0.5 w-0 group-hover:w-full transition-all duration-300`}
+              className={`h-0.5 w-0 group-hover:w-full transition-all duration-300 ${
+                !isHomePage || isScrolled ? "bg-gray-900" : "bg-white"
+              }`}
             />
           </Link>
         ))}
         {user && (
           <button
-            className={`border px-4 py-1 text-sm font-light rounded-full cursor-pointer ${
-              isScrolled ? "text-black" : "text-white"
-            } transition-all`}
+            className={`border px-4 py-1 text-sm font-light rounded-full cursor-pointer transition-all ${
+              !isHomePage || isScrolled ? "text-gray-900 border-gray-900" : "text-white border-white"
+            }`}
             onClick={() =>
               isOwner ? navigate("/owner") : setShowHotelReg(true)
             }
@@ -112,14 +86,6 @@ const Navbar = () => {
 
       {/* Desktop Right */}
       <div className="hidden md:flex items-center gap-4">
-        <img
-          src={assets.searchIcon}
-          alt="searchIcon"
-          className={`${
-            isScrolled && "invert"
-          } h-7 transition-all duration-500`}
-        />
-
         {user ? (
           <UserButton>
             <UserButton.MenuItems>
@@ -159,9 +125,9 @@ const Navbar = () => {
         <img
           src={assets.menuIcon}
           alt="menuIcon"
-          className={`${
-            isScrolled && "invert"
-          } h-4 transition-all duration-500`}
+          className={`h-4 transition-all duration-500 ${
+            !isHomePage || isScrolled ? "invert" : ""
+          }`}
         />
       </div>
 

@@ -3,11 +3,11 @@ import { assets } from "../assets/assets";
 
 const Footer = () => {
   return (
-    <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white pt-16 px-6 md:px-16 lg:px-24 xl:px-32">
+    <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white pt-8 px-6 md:px-16 lg:px-24 xl:px-32">
       <div className="flex flex-wrap justify-between gap-12 md:gap-6">
         <div className="max-w-80">
-          <img src={assets.logoWhite} alt="StayFinder Logo" className="mb-6 h-12 object-contain" />
-          <p className="text-gray-300 text-sm leading-relaxed mb-6">
+          <img src={assets.logoWhite} alt="StayFinder Logo" />
+          <p className="text-gray-300 text-sm leading-relaxed my-6">
             StayFinder is your gateway to exceptional accommodations worldwide.
             We connect travelers with unique properties and unforgettable
             experiences.
