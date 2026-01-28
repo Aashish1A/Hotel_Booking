@@ -8,19 +8,10 @@ import { assets } from "../assets/assets";
  */
 const HotelCard = ({ room, index }) => {
   return (
-    <Link
-      to={"/rooms/" + room._id}
-      onCanPlay={() => scrollTo(0, 0)}
-      key={room._id}
-      className="group relative w-full rounded-2xl overflow-hidden bg-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
-    >
+    <Link to={"/rooms/" + room._id} onCanPlay={() => scrollTo(0, 0)} key={room._id} className="group relative w-full bg-white hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 block" >
       {/* Image Container */}
       <div className="relative overflow-hidden">
-        <img
-          src={room.images[0]}
-          alt={room.hotel.name}
-          className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
-        />
+        <img src={room.images[0]} alt={room.hotel.name} className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300" />
 
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -53,11 +44,7 @@ const HotelCard = ({ room, index }) => {
 
         {/* Location */}
         <div className="flex items-center gap-2 text-gray-600 mb-4">
-          <img
-            src={assets.locationIcon}
-            alt="location"
-            className="w-4 h-4 opacity-70"
-          />
+          <img src={assets.locationIcon} alt="location" className="w-4 h-4 opacity-70" />
           <span className="text-sm">{room.hotel.address}</span>
         </div>
 
@@ -68,11 +55,7 @@ const HotelCard = ({ room, index }) => {
             <span>Free WiFi</span>
           </div>
           <div className="flex items-center gap-1">
-            <img
-              src={assets.freeBreakfastIcon}
-              alt="breakfast"
-              className="w-4 h-4"
-            />
+            <img src={assets.freeBreakfastIcon} alt="breakfast" className="w-4 h-4" />
             <span>Breakfast</span>
           </div>
           <div className="flex items-center gap-1">
